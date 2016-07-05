@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<MsMethod InstrumentType="QTof" InstrumentModel="Osprey" Version="1.0">
+	<Function Type="MS" TimeStart="0.0" TimeEnd="300.0">
+		<Instance>
+			<Settings>
+				<Setting Name="StartMass" Value="100.0"/>
+				<Setting Name="EndMass" Value="1100.0"/>
+				<Setting Name="ScanTime" Value="0.1"/>
+				<Setting Name="InterscanDelay" Value="0.005"/>
+			</Settings>
+		</Instance>
+	</Function>
+</MsMethod>

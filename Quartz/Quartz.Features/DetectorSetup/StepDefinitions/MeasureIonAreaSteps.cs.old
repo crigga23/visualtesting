@@ -1,0 +1,34 @@
+﻿using System;
+using Quartz.Support.Views.Page;
+using TechTalk.SpecFlow;
+using Automation.Reporting.Lib;
+
+namespace Quartz.Features.DetectorSetup.StepDefinitions
+{
+    [Binding]
+    public class MeasureIonAreaSteps
+    {
+        private readonly DetectorSetupPage _detectorSetupPage;
+
+        public MeasureIonAreaSteps()
+        {
+            _detectorSetupPage = new DetectorSetupPage();
+        }
+
+        [When(@"measure ion area has been selected")]
+        public void GivenMeasureIonAreaHasBeenSelected()
+        {
+            // TODO: This could be refactored to be something like - DetectorSetup.Process("MeasureIonArea").Start(); - using command object pattern
+            //var detectorSetupPage = new DetectorSetupPage();
+            _detectorSetupPage.Controls.ProcessSelector.SelectOptionFromDropDown("Measure Ion Area");
+        }
+
+        [Then(@"the setup should complete within (.*) seconds")]
+        public void ThenTheSetupShouldCompleteWithinSeconds(int seconds)
+        {
+            // TODO: Refactor - This is repeating the same code as DetectorSetupPage().ThenTheSetupShouldCompleteWithinMinutes()
+            TimeSpan timeTaken = _detectorSetupPage.GetDetectorSetupCompletionTime();
+            Check.IsTrue(timeTaken.Seconds < seconds, string.Format("Measure Ion Area took longer than {0} seconds to complete", seconds));
+        }
+    }
+}

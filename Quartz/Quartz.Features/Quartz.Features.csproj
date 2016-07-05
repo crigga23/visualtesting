@@ -1,0 +1,767 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E7D7B4B9-6301-4148-9841-DF8CB03D220F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Quartz.Features</RootNamespace>
+    <AssemblyName>Quartz.Features</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Quartz.Features\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Quartz.Features\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\Lib\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.Config.Lib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\AutomationFramework\Automation.Config.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.Instrument.Lib">
+      <HintPath>..\..\bin\AutomationFramework\Automation.Instrument.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.Reporting.Lib">
+      <HintPath>..\..\bin\AutomationFramework\Automation.Reporting.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.SystemSupport.Lib">
+      <HintPath>..\..\bin\AutomationFramework\Automation.SystemSupport.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.Typhoon.Lib">
+      <HintPath>..\..\bin\AutomationFramework\Automation.Typhoon.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.WebFramework.Lib">
+      <HintPath>..\..\bin\AutomationFramework\Automation.WebFramework.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV, Version=2.4.2.1773, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eyes.Windows.1.24\lib\net40\Emgu.CV.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Eyes.Sdk.DotNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eyes.Windows.1.24\lib\net40\Eyes.Sdk.DotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Eyes.Selenium.DotNet, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eyes.Selenium.1.57.0\lib\net40\Eyes.Selenium.DotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Eyes.Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eyes.Windows.1.24\lib\net40\Eyes.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eyes.Windows.1.24\lib\net40\Ionic.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eyes.Windows.1.24\lib\net40\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\Lib\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="NetMQ">
+      <HintPath>..\..\Lib\NetMQ.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\..\Lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TechTalk.SpecFlow, Version=1.9.0.77, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="Waters.Control.Client">
+      <HintPath>..\..\Lib\Waters.Control.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Waters.Control.Client.Interface">
+      <HintPath>..\..\Lib\Waters.Control.Client.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Waters.Control.Message">
+      <HintPath>..\..\Lib\Waters.Control.Message.dll</HintPath>
+    </Reference>
+    <Reference Include="Waters.Control.TyphoonTestAPI">
+      <HintPath>..\..\Lib\Waters.Control.TyphoonTestAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver, Version=2.48.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\AutomationFramework\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=2.48.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\AutomationFramework\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\automation2\Quartz\Quartz.Features\SmokeTest\StepDefinitions\VisualTestingSteps.cs">
+      <Link>VisualTestingSteps.cs</Link>
+    </Compile>
+    <Compile Include="DetectorSetup\StepDefinitions\MeasureIonAreaSteps.cs" />
+    <Compile Include="Help\FeatureFiles\HLP - QRZ - About Box %28Quartz%29.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HLP - QRZ - About Box %28Quartz%29.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Help\StepDefinitions\AboutQuartzSoftwareInformationSteps.cs" />
+    <Compile Include="Installation\FeatureFiles\KIT - QuartzInstallation.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KIT - QuartzInstallation.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Installation\FeatureFiles\KIT- ConfigureBeam.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KIT- ConfigureBeam.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Installation\StepDefinitions\ConfigureBeamSteps.cs" />
+    <Compile Include="Installation\StepDefinitions\QuartzInstallationSteps.cs" />
+    <Compile Include="InstrumentSetup\FeatureFiles\ACQ - QRZ - Instrument Setup %28Calibration%29 - MassLynx Raw.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ACQ - QRZ - Instrument Setup %28Calibration%29 - MassLynx Raw.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Acquisition\FeatureFiles\ACQ - QRZ - Instrument Setup %28Calibration%29 - Multi Function Acquisition.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ACQ - QRZ - Instrument Setup %28Calibration%29 - Multi Function Acquisition.feature</DependentUpon>
+    </Compile>
+    <Compile Include="InstrumentSetup\FeatureFiles\CAL - QRZ - Instrument Setup %28Calibration%29 - Buttons and Progress GUI.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAL - QRZ - Instrument Setup %28Calibration%29 - Buttons and Progress GUI.feature</DependentUpon>
+    </Compile>
+    <Compile Include="InstrumentSetup\StepDefinitions\InstrumentSetupDetectorSetup_FluidicsSteps.cs" />
+    <Compile Include="InstrumentSetup\StepDefinitions\QRZ_InstrumentSetupSteps.cs" />
+    <Compile Include="Acquisition\FeatureFiles\ACQ - QRZ - Acquisition %28Record%29.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ACQ - QRZ - Acquisition %28Record%29.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ManualTune\FeatureFiles\TUN - QRZ - Veff Calculator.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - Veff Calculator.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ManualTune\StepDefinitions\VeffCalculatorSettingStatus.cs" />
+    <Compile Include="SmokeTest\FeatureFiles\VisualTesting.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VisualTesting.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - APCI LockSpray Source Parameters.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - APCI LockSpray Source Parameters.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - APCI parameters.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - APCI parameters.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - ESI LockSpray Source Parameters.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - ESI LockSpray Source Parameters.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - ESI parameters.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - ESI parameters.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ManualTune\FeatureFiles\TUN - QRZ - Saving And Loading Sets.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - Saving And Loading Sets.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - TRIZAIC source parameters.feature.cs">
+      <DependentUpon>TUN - QRZ - TRIZAIC source parameters.feature</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - UniSpray source parameters.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - UniSpray source parameters.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ManualTune\FeatureFiles\TUN - QRZ - Load Save Development Tabs.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - Load Save Development Tabs.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Acquisition\StepDefinitions\AcquisitionRecordSteps.cs" />
+    <Compile Include="Sources\StepDefinitions\APPISourceParametersSteps.cs" />
+    <Compile Include="Calibration\FeatureFiles\CAL - ManualCalibration.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAL - ManualCalibration.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Calibration\StepDefinitions\CalibrationBackgroundSteps.cs" />
+    <Compile Include="Calibration\StepDefinitions\CalibrationSteps.cs" />
+    <Compile Include="DetectorSetup\FeatureFiles\DSU - QRZ - DetectorSetup - Both Modes.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSU - QRZ - DetectorSetup - Both Modes.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DetectorSetup\FeatureFiles\DSU - QRZ - DetectorSetup - GUI.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSU - QRZ - DetectorSetup - GUI.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DetectorSetup\FeatureFiles\DSU - QRZ - DetectorSetup - Negative Mode.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSU - QRZ - DetectorSetup - Negative Mode.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DetectorSetup\FeatureFiles\DSU - QRZ - DetectorSetup - Positive Mode.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSU - QRZ - DetectorSetup - Positive Mode.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DetectorSetup\StepDefinitions\DetectorSetupBackgroundSteps.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DetectorSetup\StepDefinitions\DetectorSetupGUISteps.cs" />
+    <Compile Include="DetectorSetup\StepDefinitions\DetectorSetupSteps.cs" />
+    <Compile Include="ManualTune\StepDefinitions\FluidicSteps.cs" />
+    <Compile Include="ManualTune\StepDefinitions\Table.cs" />
+    <Compile Include="DevConsole\FeatureFiles\CNL - QRZ - Quad Setup.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CNL - QRZ - Quad Setup.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DevConsole\FeatureFiles\CNL - QRZ - Scope Mode.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CNL - QRZ - Scope Mode.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DevConsole\StepDefinitions\ScopeModeSteps.cs" />
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - APCI-APPI source parameters.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - APCI-APPI source parameters.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - APGC Source Parameters1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - APGC Source Parameters.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - APPI source parameters.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - APPI source parameters.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - ASAP parameters.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - ASAP parameters.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - ESCI parameters.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - ESCI parameters.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - IonKey source parameters.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - IonKey source parameters.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\FeatureFiles\TUN - QRZ - NanoLockSpray Source Parameters1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - NanoLockSpray Source Parameters.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\StepDefinitions\APCISourceParameterssSteps.cs" />
+    <Compile Include="Sources\StepDefinitions\DualAPCIAPPISteps.cs" />
+    <Compile Include="Sources\StepDefinitions\SourceParametersSteps.cs" />
+    <Compile Include="ManualTune\StepDefinitions\TUN_QRZ_LoadSaveDevelopmentTabsSteps.cs" />
+    <Compile Include="ManualTune\StepDefinitions\VeffCalculatorSteps.cs" />
+    <Compile Include="DetectorSetup\FeatureFiles\DSU - QRZ - MeasureIonArea - Both Modes.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSU - QRZ - MeasureIonArea - Both Modes.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DetectorSetup\FeatureFiles\DSU - QRZ - MeasureIonArea - Negative Mode.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSU - QRZ - MeasureIonArea - Negative Mode.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DetectorSetup\FeatureFiles\DSU - QRZ - MeasureIonArea - Positive Mode.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSU - QRZ - MeasureIonArea - Positive Mode.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Performance\FeatureFiles\GeneralGUI.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneralGUI.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Performance\StepDefinitions\GeneralGUISteps.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ManualTune\FeatureFiles\TUN - QRZ - GUI.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - GUI.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ManualTune\FeatureFiles\TUN - QRZ - Factory Defaults.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TUN - QRZ - Factory Defaults.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ManualTune\StepDefinitions\TunePageFactoryDefaultsSteps.cs" />
+    <Compile Include="ManualTune\StepDefinitions\TunePageSavingAndLoadingSetsSteps.cs" />
+    <Compile Include="ManualTune\StepDefinitions\TunePage_GUISteps.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DevConsole\StepDefinitions\QuadSetupSteps.cs" />
+    <Compile Include="SmokeTest\FeatureFiles\SMK - QRZ - Smoke Test.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMK - QRZ - Smoke Test.feature</DependentUpon>
+    </Compile>
+    <Compile Include="SmokeTest\StepDefinitions\SmokeTestSteps.cs" />
+    <Compile Include="Hooks.cs" />
+    <Compile Include="Vacuum\FeatureFiles\VAC - QRZ - Vacuum.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VAC - QRZ - Vacuum.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Vacuum\StepDefinitions\VacuumSteps.cs" />
+    <Compile Include="VersionsHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Calibration\FeatureFiles\CAL - ManualCalibration.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CAL - ManualCalibration.feature.cs</LastGenOutput>
+    </None>
+    <Content Include="Data\InstrumentData\Beta3\factory_settings.gpb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\InstrumentData\Beta5\factory_settings.gpb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\InstrumentData\Beta6\factory_settings.gpb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\InstrumentData\Beta5\SAA-005">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Data\InstrumentData\Beta5\SAA-005.md5" />
+    <None Include="Data\TestData\ExistingTuneSet_TestData">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\TestData\ExistingTuneSet_TestData.md5">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DetectorSetup\FeatureFiles\DSU - QRZ - DetectorSetup - Both Modes.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DSU - QRZ - DetectorSetup - Both Modes.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DetectorSetup\FeatureFiles\DSU - QRZ - DetectorSetup - GUI.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DSU - QRZ - DetectorSetup - GUI.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DetectorSetup\FeatureFiles\DSU - QRZ - DetectorSetup - Negative Mode.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DSU - QRZ - DetectorSetup - Negative Mode.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DetectorSetup\FeatureFiles\DSU - QRZ - DetectorSetup - Positive Mode.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DSU - QRZ - DetectorSetup - Positive Mode.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Installation\FeatureFiles\KIT- ConfigureBeam.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>KIT- ConfigureBeam.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Acquisition\FeatureFiles\ACQ - QRZ - Instrument Setup %28Calibration%29 - Multi Function Acquisition.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ACQ - QRZ - Instrument Setup %28Calibration%29 - Multi Function Acquisition.feature.cs</LastGenOutput>
+    </None>
+    <None Include="InstrumentSetup\FeatureFiles\ACQ - QRZ - Instrument Setup %28Calibration%29 - MassLynx Raw.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ACQ - QRZ - Instrument Setup %28Calibration%29 - MassLynx Raw.feature.cs</LastGenOutput>
+    </None>
+    <None Include="InstrumentSetup\FeatureFiles\CAL - QRZ - Instrument Setup %28Calibration%29 - Buttons and Progress GUI.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CAL - QRZ - Instrument Setup %28Calibration%29 - Buttons and Progress GUI.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Acquisition\FeatureFiles\ACQ - QRZ - Acquisition %28Record%29.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ACQ - QRZ - Acquisition %28Record%29.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Quartz.Features.testsettings" />
+    <None Include="SmokeTest\FeatureFiles\VisualTesting.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>VisualTesting.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - APCI LockSpray Source Parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - APCI LockSpray Source Parameters.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - ESI LockSpray Source Parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - ESI LockSpray Source Parameters.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DevConsole\FeatureFiles\CNL - QRZ - Scope Mode.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CNL - QRZ - Scope Mode.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Help\FeatureFiles\HLP - QRZ - About Box %28Quartz%29.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>HLP - QRZ - About Box %28Quartz%29.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Installation\FeatureFiles\KIT - QuartzInstallation.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>KIT - QuartzInstallation.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - APCI parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - APCI parameters.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - APCI-APPI source parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - APCI-APPI source parameters.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - APGC Source Parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - APGC Source Parameters1.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - APPI source parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - APPI source parameters.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - ASAP parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - ASAP parameters.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - ESCI parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - ESCI parameters.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - ESI parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - ESI parameters.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - IonKey source parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - IonKey source parameters.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - NanoLockSpray Source Parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - NanoLockSpray Source Parameters1.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - TRIZAIC source parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - TRIZAIC source parameters.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Sources\FeatureFiles\TUN - QRZ - UniSpray source parameters.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - UniSpray source parameters.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ManualTune\FeatureFiles\TUN - QRZ - Load Save Development Tabs.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - Load Save Development Tabs.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ManualTune\FeatureFiles\TUN - QRZ - Veff Calculator.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - Veff Calculator.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DetectorSetup\FeatureFiles\DSU - QRZ - MeasureIonArea - Both Modes.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DSU - QRZ - MeasureIonArea - Both Modes.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DetectorSetup\FeatureFiles\DSU - QRZ - MeasureIonArea - Negative Mode.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DSU - QRZ - MeasureIonArea - Negative Mode.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DetectorSetup\FeatureFiles\DSU - QRZ - MeasureIonArea - Positive Mode.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DSU - QRZ - MeasureIonArea - Positive Mode.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Performance\FeatureFiles\GeneralGUI.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GeneralGUI.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ManualTune\FeatureFiles\TUN - QRZ - Factory Defaults.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - Factory Defaults.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ManualTune\FeatureFiles\TUN - QRZ - GUI.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - GUI.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ManualTune\FeatureFiles\TUN - QRZ - Saving And Loading Sets.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TUN - QRZ - Saving And Loading Sets.feature.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="DevConsole\FeatureFiles\CNL - QRZ - Quad Setup.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CNL - QRZ - Quad Setup.feature.cs</LastGenOutput>
+    </None>
+    <None Include="SmokeTest\FeatureFiles\SMK - QRZ - Smoke Test.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SMK - QRZ - Smoke Test.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Vacuum\FeatureFiles\VAC - QRZ - Vacuum.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>VAC - QRZ - Vacuum.feature.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\Dbgview.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\MethodTemplate.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\ms_InstrumentSetupTest.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\ADC2TabSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\Cell1TabSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\Cell2TabSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\ESISourceSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\FluidicsTabSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\GasesTabSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\InstrumentTabSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\MSProfileTabSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\RFTabSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\StepwaveTabSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\System1TabSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\System2TabSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\OspreySpecification\TrapIMSTabSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\SnownetSpecification\SnownetSpecification.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\HDMSe\mse_fullhd.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\HDMSe\mse_fullhd_dual_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\HDMSe\mse_fullhd_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\HDMSMS\hdmsms.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\HDMSMS\hdmsms_dual_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\HDMSMS\hdmsms_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\HDMS\hdms.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\HDMS\hdms_dual_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\HDMS\hdms_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\MSe\mse.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\MSe\mse_dual_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\MSe\mse_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\MSMS\msms.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\MSMS\msms_dual_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\MSMS\msms_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\MS\ms.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\MS\ms_dual_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Osprey\Methods\MS\ms_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Peregrine\Methods\MSe\mse.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Peregrine\Methods\MSe\mse_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Peregrine\Methods\MS\ms.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Instruments\Peregrine\Methods\MS\ms_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\HDMSe\mse_fullhd.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\HDMSe\mse_fullhd_dual_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\HDMSe\mse_fullhd_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\HDMSMS\hdmsms.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\HDMSMS\hdmsms_dual_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\HDMSMS\hdmsms_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\HDMS\hdms.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\HDMS\hdms_dual_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\HDMS\hdms_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\MSe\mse.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\MSe\mse_dual_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\MSe\mse_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\MSMS\msms.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\MSMS\msms_dual_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\MSMS\msms_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\MS\ms.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\MS\ms_dual_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestData\Record Acquisition Test Data\MS\ms_lockmass.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Quartz.Support\Quartz.Support.csproj">
+      <Project>{40981949-885e-47fa-a64a-80f9081ac5d5}</Project>
+      <Name>Quartz.Support</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="General\FeatureFiles\" />
+    <Folder Include="General\StepDefinitions\" />
+    <Folder Include="SourcePressureTest\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(SolutionDir)packages\SpecFlow.1.9.0\tools\" "$(TargetDir)"
+copy /y "$(ProjectPath)" "$(TargetDir)"
+copy /y "$(ProjectDir)\$(ProjectName).testsettings" "$(TargetDir)"
+copy /y "$(ProjectDir)\app.config" "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)..\AutomationFramework\Automation.Config.Lib\Instruments\*" "$(TargetDir)\Instruments\" 
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

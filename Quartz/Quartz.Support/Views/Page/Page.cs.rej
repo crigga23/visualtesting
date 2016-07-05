@@ -1,0 +1,127 @@
+--- Page.cs
++++ Page.cs
+@@ -1,4 +1,5 @@
+-﻿using Waters.Automation.Reporting;
+-using Microsoft.VisualStudio.TestTools.UnitTesting;
++﻿using System;
++using System.Collections.Generic;
++using System.Linq;
+ using OpenQA.Selenium;
+ using OpenQA.Selenium.Chrome;
+@@ -3,4 +4,3 @@
+ using OpenQA.Selenium;
+ using OpenQA.Selenium.Chrome;
+-using OpenQA.Selenium.Support.UI;
+ using QuartzAutomationSupport.GeneralHelpers;
+@@ -6,10 +6,4 @@
+ using QuartzAutomationSupport.GeneralHelpers;
+-using System;
+-using System.Collections.Generic;
+-using System.Linq;
+-using System.Text;
+-using System.Threading;
+-using System.Threading.Tasks;
+-using WebAutomationFramework;
++using Waters.Automation.Reporting;
+ using WebAutomationFramework.Controls;
+ 
+@@ -14,6 +8,6 @@
+ using WebAutomationFramework.Controls;
+ 
+-namespace QuartzAutomationSupport.Views
++namespace QuartzAutomationSupport.Views.Page
+ {
+     public class Page
+     {
+@@ -17,7 +11,6 @@
+ {
+     public class Page
+     {
+-
+         #region Properties
+ 
+         private string windowHandle;
+@@ -130,7 +123,7 @@
+ 
+                 if (elements.Count > 0)
+                 {
+-                    var element = elements.Where(e => e.Displayed).FirstOrDefault();
++                    var element = elements.FirstOrDefault(e => e.Displayed);
+ 
+                     var type = element.GetControlType();
+ 
+@@ -134,5 +127,6 @@
+ 
+                     var type = element.GetControlType();
+ 
+-                    if (type == typeof(TextBox))
++                    if (type == typeof (TextBox))
++                    {
+                         return new TextBox(element);
+@@ -138,3 +132,6 @@
+                         return new TextBox(element);
+-                    else if (type == typeof(Dropdown))
++                    }
++
++                    if (type == typeof (Dropdown))
++                    {
+                         return new Dropdown(element);
+@@ -140,6 +137,5 @@
+                         return new Dropdown(element);
+-                    else if (type == typeof(Checkbox))
+-                        return new Checkbox(element);
+-                    else
+-                        return null;
++                    }
++
++                    return type == typeof (Checkbox) ? new Checkbox(element) : null;
+                 }
+@@ -145,9 +141,7 @@
+                 }
+-                else
+-                {
+-                    Report.Debug(string.Format("Could not find element '{0}'", controlLabel));
+-                    return null;
+-                }
++
++                Report.Debug(string.Format("Could not find element '{0}'", controlLabel));
++                return null;
+             }
+             catch (NoSuchElementException)
+             {
+@@ -224,35 +218,4 @@
+         #endregion Methods
+ 
+     }
+-
+-    public class BaseControls
+-    {
+-        public List<Control> AllControls
+-        {
+-            get
+-            {
+-                var props = this.GetType().GetProperties();
+-
+-                List<Control> controls = new List<Control>();
+-
+-                foreach (var prop in props)
+-                {
+-                    if (prop.PropertyType == typeof(Button) ||
+-                        prop.PropertyType == typeof(Checkbox) ||
+-                        prop.PropertyType == typeof(TextBox) ||
+-                        prop.PropertyType == typeof(Dropdown))
+-                    {
+-                        controls.Add((Control)prop.GetValue(this, null));
+-                    }
+-                }
+-
+-                return controls;
+-            }
+-        }
+-
+-        public Control FindControlByLabel(string label)
+-        {
+-            return AllControls.Find(control => control.Label.Equals(label));
+-        }
+-    }
+ }

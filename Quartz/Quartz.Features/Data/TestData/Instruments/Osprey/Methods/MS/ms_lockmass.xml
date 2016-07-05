@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<MsMethod InstrumentType="QTof" InstrumentModel="Osprey" Version="1.0">
+
+	<Settings>
+		<Setting Name="SourceTemperature" Value="130.0" Mapping="Source.SourceTemperature.Setting"/>
+	</Settings>
+
+	<Setup Type="LockMass">
+		<Settings>
+			<Setting Name="Manual" Value="1.0"/>
+			<Setting Name="LockMass" Value="556.8"/>
+			<Setting Name="Interval" Value="15.0"/>
+		</Settings>
+	</Setup>
+
+  <Modes>
+    <Mode Name="TOFMode" Value="TOF"/>
+  </Modes>
+	<Function Type="MS" TimeStart="0.0" TimeEnd="3000.0">
+		<Instance>
+			<Settings>			
+				<Setting Name="StartMass" Value="100.0"/>
+				<Setting Name="EndMass" Value="1200.0"/>
+				<Setting Name="ScanTime" Value="0.1"/>
+				<Setting Name="InterscanDelay" Value="0.005"/>
+			</Settings>
+		</Instance>
+	</Function>
+</MsMethod>
+

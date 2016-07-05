@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{40981949-885E-47FA-A64A-80F9081AC5D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Quartz.Support</RootNamespace>
+    <AssemblyName>Quartz.Support</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Quartz.Features\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Quartz.Features\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\Lib\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.Config.Lib">
+      <HintPath>..\..\bin\AutomationFramework\Automation.Config.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.Reporting.Lib">
+      <HintPath>..\..\bin\AutomationFramework\Automation.Reporting.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.SystemSupport.Lib">
+      <HintPath>..\..\bin\AutomationFramework\Automation.SystemSupport.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.Typhoon.Lib">
+      <HintPath>..\..\bin\AutomationFramework\Automation.Typhoon.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.WebFramework.Lib">
+      <HintPath>..\..\bin\AutomationFramework\Automation.WebFramework.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Eyes.Sdk.DotNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Eyes.Selenium.1.57.0\lib\net40\Eyes.Sdk.DotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Eyes.Selenium.DotNet, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Eyes.Selenium.1.57.0\lib\net40\Eyes.Selenium.DotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\..\Lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="Waters.Control.Client">
+      <HintPath>..\..\Lib\Waters.Control.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Waters.Control.Client.Interface">
+      <HintPath>..\..\Lib\Waters.Control.Client.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Waters.Control.Message">
+      <HintPath>..\..\Lib\Waters.Control.Message.dll</HintPath>
+    </Reference>
+    <Reference Include="Waters.Control.TyphoonTestAPI">
+      <HintPath>..\..\Lib\Waters.Control.TyphoonTestAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver">
+      <HintPath>..\..\bin\AutomationFramework\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support">
+      <HintPath>..\..\bin\AutomationFramework\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\AppSettingsConfigurationManager.cs" />
+    <Compile Include="Configuration\IAppSettingsConfigurationManager.cs" />
+    <Compile Include="Configuration\ITestConfiguration.cs" />
+    <Compile Include="Configuration\TestConfiguration.cs" />
+    <Compile Include="ControlGroup.cs" />
+    <Compile Include="Exceptions\NoSuchInstrumentModeException.cs" />
+    <Compile Include="Exceptions\NoSuchInstrumentPolarityException.cs" />
+    <Compile Include="Exceptions\NoSuchMassTypeException.cs" />
+    <Compile Include="GeneralHelpers\AutomationDriver.cs" />
+    <Compile Include="GeneralHelpers\FileDialogHelper.cs" />
+    <Compile Include="GeneralHelpers\InstrumentHelper.cs" />
+    <Compile Include="GeneralHelpers\VeffCalculatorHelper.cs" />
+    <Compile Include="IWebDriverConfiguration.cs" />
+    <Compile Include="IWebDriverFactory.cs" />
+    <Compile Include="LocalWebDriverConfiguration.cs" />
+    <Compile Include="GeneralHelpers\MethodCreatorHelper.cs" />
+    <Compile Include="GeneralHelpers\ReportHelper.cs" />
+    <Compile Include="GeneralHelpers\SpecificationHelper.cs" />
+    <Compile Include="GeneralHelpers\TyphoonHelper.cs" />
+    <Compile Include="Views\Page\VeffCalculatorCommand.cs" />
+    <Compile Include="WebDriverFactory.cs" />
+    <Compile Include="Slot.cs" />
+    <Compile Include="Views\Modals\ChartReadbackModal.cs" />
+    <Compile Include="Views\Modals\CreateAcquisitionModal.cs" />
+    <Compile Include="Views\Modals\Modal.cs" />
+    <Compile Include="Views\Modals\PlotPeakPropertiesModal.cs" />
+    <Compile Include="Views\Modals\RecordAcquisitionModal.cs" />
+    <Compile Include="Views\Modals\DialogConfirmationModal.cs" />
+    <Compile Include="Views\Modals\AboutQuartzModal.cs" />
+    <Compile Include="Views\Modals\LoadDevelopmentTabsModal.cs" />
+    <Compile Include="Views\Modals\SaveDevelopmentTabsModal.cs" />
+    <Compile Include="Views\Page\ApplicationsPage.cs" />
+    <Compile Include="Views\Page\FluidicsSetupCommand.cs" />
+    <Compile Include="Views\Page\InstrumentSetupPage.cs" />
+    <Compile Include="Views\Page\LoginPage.cs" />
+    <Compile Include="Views\Page\MobilityCommand.cs" />
+    <Compile Include="Views\Page\MobilityPopupPage.cs" />
+    <Compile Include="Views\Page\ProcessSetupCommand.cs" />
+    <Compile Include="Views\Page\TOFCommand.cs" />
+    <Compile Include="Views\Page\TuningCommand.cs" />
+    <Compile Include="Views\TabViews\ADC2TabView.cs" />
+    <Compile Include="Views\Modals\VeffCalculatorModal.cs" />
+    <Compile Include="Views\TabViews\Cell1TabView.cs" />
+    <Compile Include="Views\TabViews\Cell2TabView.cs" />
+    <Compile Include="Views\TabViews\GasesTabView.cs" />
+    <Compile Include="Views\TabViews\TrapIMSTabView.cs" />
+    <Compile Include="Views\TabViews\RFTabView.cs" />
+    <Compile Include="Views\TabViews\CustomTab.cs" />
+    <Compile Include="Views\TabViews\FluidicsTabView.cs" />
+    <Compile Include="Views\TabViews\InstrumentTabView.cs" />
+    <Compile Include="Views\TabViews\MSProfileTabView.cs" />
+    <Compile Include="Views\Page\QuartzHeader.cs" />
+    <Compile Include="Views\Modals\RecordDataModal.cs" />
+    <Compile Include="Views\Modals\SaveTuneSetModal.cs" />
+    <Compile Include="Views\Modals\LoadTuneSetModal.cs" />
+    <Compile Include="Views\NavigationMenu.cs" />
+    <Compile Include="GeneralHelpers\ServiceHelper.cs" />
+    <Compile Include="Views\Page\CalibrationPage.cs" />
+    <Compile Include="Views\Page\DetectorSetupPage.cs" />
+    <Compile Include="Views\EditCustomControlForm.cs" />
+    <Compile Include="Views\InstrumentControlWidget.cs" />
+    <Compile Include="Views\Page\Page.cs" />
+    <Compile Include="Views\Page\PeakPickerPage.cs" />
+    <Compile Include="Views\Page\QuadSetupPage.cs" />
+    <Compile Include="Views\Page\ScopeModePage.cs" />
+    <Compile Include="Views\TabViews\SourceTabView.cs" />
+    <Compile Include="Views\TabViews\StepWaveTabView.cs" />
+    <Compile Include="Views\TabViews\System1TabView.cs" />
+    <Compile Include="Views\TabViews\System2TabView.cs" />
+    <Compile Include="Views\Page\TunePage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\TabViews\TWaveTabView.cs" />
+    <Compile Include="Views\Page\VacuumPage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Quartz.Features\App.config">
+      <Link>App.config</Link>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\packages\Chromium.ChromeDriver.2.20\content\chromedriver.exe">
+      <Link>chromedriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\PhantomJS.2.1.1\tools\phantomjs\phantomjs.exe">
+      <Link>phantomjs.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
